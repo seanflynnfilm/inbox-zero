@@ -1,4 +1,5 @@
 import type { ReactElement, ReactNode, Ref } from "react";
+import { ImportantMarker } from "./MailThreadRow";
 
 export type MailReaderToolbarButton = {
   action:
@@ -19,6 +20,8 @@ export type MailReaderToolbarButton = {
 export type MailReaderToolbarProps = {
   subject: string;
   isStarred: boolean;
+  /** Gmail's own Important marker. Outlook has no equivalent, so it stays unset there. */
+  isImportant?: boolean;
   isUnread: boolean;
   labelChips?: ReactNode[];
   onBackToInbox: () => void;
@@ -44,12 +47,14 @@ export type MailReaderToolbarProps = {
 
 const DEFAULT_TOOLBAR_STRINGS = {
   starredConversation: "Starred conversation",
+  importantConversation: "Important conversation",
   threadActions: "Thread actions",
 };
 
 export function MailReaderToolbar({
   subject,
   isStarred,
+  isImportant = false,
   isUnread,
   labelChips = [],
   onBackToInbox,
@@ -99,6 +104,16 @@ export function MailReaderToolbar({
                 role="img"
                 title={text.starredConversation}
               />
+            )}
+            {isImportant && (
+              <span
+                aria-label={text.importantConversation}
+                className="flex shrink-0"
+                role="img"
+                title={text.importantConversation}
+              >
+                <ImportantMarker className="size-4" />
+              </span>
             )}
             <h1 className="font-title font-medium text-2xl text-foreground leading-tight tracking-tight">
               {subject}

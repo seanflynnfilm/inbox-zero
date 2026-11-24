@@ -12,6 +12,7 @@ import { AlertCircleIcon, Loader2Icon, MailIcon } from "lucide-react";
 import { latestShownMessage } from "@/app/(app)/[emailAccountId]/mail/latest-shown-message";
 import { ReaderToolbar } from "@/app/(app)/[emailAccountId]/mail/ReaderToolbar";
 import { MailReaderSurface } from "@inboxzero/mail-ui/MailReaderSurface";
+import { isThreadImportant } from "@/app/(app)/[emailAccountId]/mail/important-state";
 import { isThreadStarred } from "@/app/(app)/[emailAccountId]/mail/star-state";
 import { useThreadTranslation } from "@/app/(app)/[emailAccountId]/mail/use-thread-translation";
 import type {
@@ -192,6 +193,9 @@ export function ThreadReader({
     messageExpansion?: ComponentProps<typeof ReaderToolbar>["messageExpansion"],
   ) => (
     <ReaderToolbar
+      isImportant={isThreadImportant(
+        thread?.messages.length ? thread.messages : messages,
+      )}
       isStarred={isThreadStarred(
         thread?.messages.length ? thread.messages : messages,
       )}

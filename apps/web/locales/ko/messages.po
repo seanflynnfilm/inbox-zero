@@ -7306,6 +7306,11 @@ msgstr "JSON 파일에서 규칙 가져오기"
 msgid "Important"
 msgstr "중요"
 
+#: app/(app)/[emailAccountId]/mail/ReaderToolbar.tsx
+#: app/(app)/[emailAccountId]/mail/ThreadRow.tsx
+msgid "Important conversation"
+msgstr "중요한 대화"
+
 #: app/(app)/[emailAccountId]/briefs/Onboarding.tsx
 msgid "Important details from past discussions"
 msgstr "지난 논의의 중요한 세부 정보"

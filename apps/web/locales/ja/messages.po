@@ -7306,6 +7306,11 @@ msgstr "JSONファイルからルールをインポート"
 msgid "Important"
 msgstr "重要"
 
+#: app/(app)/[emailAccountId]/mail/ReaderToolbar.tsx
+#: app/(app)/[emailAccountId]/mail/ThreadRow.tsx
+msgid "Important conversation"
+msgstr "重要な会話"
+
 #: app/(app)/[emailAccountId]/briefs/Onboarding.tsx
 msgid "Important details from past discussions"
 msgstr "過去のやり取りの重要な詳細"

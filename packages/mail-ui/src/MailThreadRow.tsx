@@ -20,6 +20,8 @@ export type MailThreadRowProps = {
   actions?: ReactNode;
   isUnread: boolean;
   isStarred: boolean;
+  /** Gmail's own Important marker. Outlook has no equivalent, so it stays unset there. */
+  isImportant?: boolean;
   isDraft: boolean;
   messageCount: number;
   /** Replaces the message count, for a row that stands for several conversations. */
@@ -38,6 +40,7 @@ export type MailThreadRowProps = {
   strings?: Partial<{
     draft: string;
     starredConversation: string;
+    importantConversation: string;
     selectConversation: (participantSummary: string) => string;
   }>;
 };
@@ -54,6 +57,7 @@ export function MailThreadRow({
   actions,
   isUnread,
   isStarred,
+  isImportant = false,
   isDraft,
   messageCount,
   countBadge,
@@ -109,6 +113,7 @@ export function MailThreadRow({
       >
         {participantSummary}
       </span>
+      {isImportant ? <ImportantMarker /> : null}
       {draftMarker}
       {messageCountMarker}
     </>
@@ -168,6 +173,11 @@ export function MailThreadRow({
       {isStarred && (
         <span className="sr-only">
           {strings?.starredConversation ?? "Starred conversation"}
+        </span>
+      )}
+      {isImportant && (
+        <span className="sr-only">
+          {strings?.importantConversation ?? "Important conversation"}
         </span>
       )}
       <span
@@ -265,4 +275,18 @@ function rowBackground({
   if (isSelected) return "bg-primary/10";
   if (isFocused) return "bg-primary/5";
   return "bg-background hover:bg-muted/50";
+}
+
+/** Gmail's chevron-shaped Important marker, so it reads the same as in Gmail. */
+export function ImportantMarker({ className }: { className?: string }) {
+  return (
+    <svg
+      aria-hidden
+      className={cx("size-3 shrink-0 self-center text-amber-500", className)}
+      fill="currentColor"
+      viewBox="0 0 12 12"
+    >
+      <path d="M1.5 2.5h6l3 3.5-3 3.5h-6l3-3.5z" />
+    </svg>
+  );
 }

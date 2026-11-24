@@ -7306,6 +7306,11 @@ msgstr "Kuralları JSON dosyasından içe aktar"
 msgid "Important"
 msgstr "Önemli"
 
+#: app/(app)/[emailAccountId]/mail/ReaderToolbar.tsx
+#: app/(app)/[emailAccountId]/mail/ThreadRow.tsx
+msgid "Important conversation"
+msgstr "Önemli konuşma"
+
 #: app/(app)/[emailAccountId]/briefs/Onboarding.tsx
 msgid "Important details from past discussions"
 msgstr "Geçmiş görüşmelerden önemli ayrıntılar"

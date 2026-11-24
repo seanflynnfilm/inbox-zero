@@ -4,6 +4,7 @@ import { memo, useMemo, type Ref } from "react";
 import { CopyIcon, PaperclipIcon } from "lucide-react";
 import { Trans, useLingui } from "@lingui/react/macro";
 import { MailThreadRow } from "@inboxzero/mail-ui/MailThreadRow";
+import { isThreadImportant } from "@/app/(app)/[emailAccountId]/mail/important-state";
 import { isThreadStarred } from "@/app/(app)/[emailAccountId]/mail/star-state";
 import { MailLabelChip } from "@/app/(app)/[emailAccountId]/mail/MailLabelChip";
 import { isThreadUnread } from "@/app/(app)/[emailAccountId]/mail/read-state";
@@ -147,6 +148,7 @@ export const ThreadRow = memo(function ThreadRow({
       isDraft={isDraft}
       isFocused={isFocused}
       isSelected={isSelected}
+      isImportant={isThreadImportant(thread.messages)}
       isStarred={isThreadStarred(thread.messages)}
       isUnread={isThreadUnread(thread.messages)}
       labels={[
@@ -178,6 +180,7 @@ export const ThreadRow = memo(function ThreadRow({
       strings={{
         draft: t`Draft`,
         starredConversation: t`Starred conversation`,
+        importantConversation: t`Important conversation`,
         selectConversation: (participants) =>
           t`Select conversation with ${participants}`,
       }}

@@ -27,6 +27,7 @@ import { Button } from "@/components/ui/button";
 type ReaderToolbarProps = {
   subject: string;
   isStarred: boolean;
+  isImportant: boolean;
   isUnread: boolean;
   labels: EmailMessageCellLabel[];
   /**
@@ -59,6 +60,7 @@ type ReaderToolbarProps = {
 export function ReaderToolbar({
   subject,
   isStarred,
+  isImportant,
   isUnread,
   labels,
   labelHref,
@@ -85,6 +87,7 @@ export function ReaderToolbar({
         move_to_inbox: <ArchiveRestoreIcon className="size-3.5" />,
         mark_unread: <MailIcon className="size-3.5" />,
       }}
+      isImportant={isImportant}
       isStarred={isStarred}
       isUnread={isUnread}
       labelChips={labels.map((label) => (
@@ -124,6 +127,7 @@ export function ReaderToolbar({
       renderButton={(button) => renderButton(button, i18n)}
       strings={{
         starredConversation: t`Starred conversation`,
+        importantConversation: t`Important conversation`,
         threadActions: t`Thread actions`,
       }}
       subject={subject}

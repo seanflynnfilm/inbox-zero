@@ -7306,6 +7306,11 @@ msgstr "从 JSON 文件导入规则"
 msgid "Important"
 msgstr "重要"
 
+#: app/(app)/[emailAccountId]/mail/ReaderToolbar.tsx
+#: app/(app)/[emailAccountId]/mail/ThreadRow.tsx
+msgid "Important conversation"
+msgstr "重要会话"
+
 #: app/(app)/[emailAccountId]/briefs/Onboarding.tsx
 msgid "Important details from past discussions"
 msgstr "过往讨论中的重要细节"

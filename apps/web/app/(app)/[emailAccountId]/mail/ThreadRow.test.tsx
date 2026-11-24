@@ -115,6 +115,16 @@ describe("ThreadRow", () => {
     expect(screen.getByText("Draft")).toBeTruthy();
   });
 
+  it("shows Gmail's Important marker without rendering it as a label chip", () => {
+    const { rerender } = render(row(thread([undefined])));
+    expect(screen.queryByText("Important conversation")).toBeNull();
+
+    rerender(row(thread([undefined], "Subject", ["IMPORTANT"])));
+
+    expect(screen.getByText("Important conversation")).toBeTruthy();
+    expect(screen.queryByText("IMPORTANT")).toBeNull();
+  });
+
   it("does not offer a code to copy on ordinary mail with numbers", () => {
     render(row(thread([undefined], "Invoice 482913 for October")));
 
